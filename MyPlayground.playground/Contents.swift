@@ -102,7 +102,7 @@ func runningTime(arr: [Int]) -> Int {
 
 runningTime(arr: [2, 1, 3, 1, 2])
 
-func countSort(arr: [[String]]) -> Void {
+func countSortMid(arr: [[String]]) -> Void {
     // Write your code here
     let sorted = arr.sorted { $0[0] < $1[0] }
     let half = arr.count / 2
@@ -119,7 +119,7 @@ func countSort(arr: [[String]]) -> Void {
     }
 }
 
-countSort(arr: [["0", "ab"], ["6", "cd"], ["1", "ef"], ["6", "gh"], ["4", "ij"], ["0", "ab"], ["6", "cd"]])
+countSortMid(arr: [["0", "ab"], ["6", "cd"], ["1", "ef"], ["6", "gh"], ["4", "ij"], ["0", "ab"], ["6", "cd"]])
 
 func insertionSort2(n: Int, arr: [Int]) -> Void {
     // Write your code here
