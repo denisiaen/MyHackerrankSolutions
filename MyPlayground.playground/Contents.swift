@@ -14,6 +14,96 @@ extension Array {
 
 func countSort(arr: [[String]]) -> Void {
     // Write your code here
+
+}
+
+func countingSort2(arr: [Int]) -> [Int] {
+    // Write your code here
+    var result = [Int](repeating: 0, count: 100)
+    var sorted = [Int]()
+    
+    for item in arr {
+        result[item] += 1
+    }
+        
+    for (index, item) in result.enumerated() {
+        if item != 0 {
+            for _ in 0..<item {
+                sorted.append(index)
+            }
+        }
+    }
+   
+    return sorted
+}
+
+countingSort2(arr: [63, 25, 73 ,1 ,98 ,73 ,56 ,84, 86, 57 ,16 ,83 ,8 ,25, 81 ,56, 9, 53, 98, 67, 99, 12 ,83 ,89, 80 ,91, 39, 86, 76, 85 ,74, 39, 25, 90, 59, 10 ,94, 32, 44 ,3 ,89 ,30 ,27 ,79 ,46 ,96, 27 ,32, 18 ,21 ,92 ,69, 81 ,40 ,40 ,34 ,68 ,78 ,24, 87 ,42, 69 ,23 ,41, 78, 22, 6 ,90 ,99, 89 ,50 ,30, 20 ,1 ,43, 3, 70, 95, 33 ,46 ,44, 9 ,69 ,48 ,33, 60, 65 ,16, 82, 67, 61 ,32, 21, 79, 75 ,75 ,13 ,87, 70, 33])
+
+countingSort2(arr: [63, 54, 17, 78, 43, 70, 32, 97, 16, 94, 74, 18, 60, 61, 35, 83, 13, 56, 75, 52, 70, 12, 24 ,37 ,17, 0 ,16, 64, 34 ,81 ,82 ,24, 69 ,2, 30, 61 ,83 ,37, 97, 16 ,70 ,53 ,0 ,61, 12 ,17 ,97, 67, 33, 30, 49 ,70 ,11, 40 ,67 ,94 ,84 ,60 ,35 ,58 ,19 ,81, 16 ,14 ,68, 46 ,42, 81, 75 ,87, 13, 84, 33 ,34 ,14, 96, 7 ,59 ,17 ,98 ,79, 47 ,71 ,75, 8, 27 ,73, 66, 64 ,12 ,29, 35 ,80, 78, 80 ,6 ,5 ,24 ,49, 82])
+
+func countingSort(arr: [Int]) -> [Int] {
+    // Write your code here
+    var output = [Int](repeating: 0, count: 100)
+    
+    for item in arr {
+        output[item] += 1
+    }
+    
+    return output
+}
+
+countingSort(arr: [1, 1, 3, 2, 1])
+countingSort(arr: [0, 1])
+countingSort(arr: [63, 54, 17, 78, 43, 70, 32, 97, 16, 94, 74, 18, 60, 61, 35, 83, 13, 56, 75, 52, 70, 12, 24 ,37 ,17, 0 ,16, 64, 34 ,81 ,82 ,24, 69 ,2, 30, 61 ,83 ,37, 97, 16 ,70 ,53 ,0 ,61, 12 ,17 ,97, 67, 33, 30, 49 ,70 ,11, 40 ,67 ,94 ,84 ,60 ,35 ,58 ,19 ,81, 16 ,14 ,68, 46 ,42, 81, 75 ,87, 13, 84, 33 ,34 ,14, 96, 7 ,59 ,17 ,98 ,79, 47 ,71 ,75, 8, 27 ,73, 66, 64 ,12 ,29, 35 ,80, 78, 80 ,6 ,5 ,24 ,49, 82])
+
+func quickSort(arr: [Int]) -> [Int] {
+    // Write your code here
+    let pivot = arr[0]
+    var left = [Int]()
+    var equal = [Int]()
+    var right = [Int]()
+    
+    for input in arr {
+        if input < pivot {
+            left.append(input)
+        } else if input > pivot {
+            right.append(input)
+        } else {
+            equal.append(input)
+        }
+    }
+    
+    return (left + equal + right)
+}
+
+quickSort(arr: [4, 5, 3, 7, 2])
+
+func runningTime(arr: [Int]) -> Int {
+    // Write your code here
+    var array = arr
+    var runningTime = 0
+    var j = 0
+    var value = 0
+    
+    for i in (1..<array.count) {
+        value = array[i]
+        j = i - 1
+        while j>=0 && value < array[j] {
+            array[j+1] = array[j]
+            j = j - 1
+            runningTime += 1
+        }
+        array[j+1] = value
+        array.prettyPrint()
+    }
+    
+    return runningTime
+}
+
+runningTime(arr: [2, 1, 3, 1, 2])
+
+func countSort(arr: [[String]]) -> Void {
+    // Write your code here
     let sorted = arr.sorted { $0[0] < $1[0] }
     let half = arr.count / 2
     let rightSplit = Array(sorted[half..<sorted.count])
