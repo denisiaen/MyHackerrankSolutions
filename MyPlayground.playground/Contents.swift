@@ -12,10 +12,31 @@ extension Array {
     }
 }
 
-func countSort(arr: [[String]]) -> Void {
+func countSortFull(arr: [[String]]) -> Void {
     // Write your code here
-
+    let half = arr.count / 2
+    var arrayOutput : [[String]] = .init(repeating: [], count: 100)
+    
+    for (index, subArray) in arr.enumerated() {
+        let key = Int(subArray[0]) ?? 0
+        if index < half {
+            arrayOutput[key].append("- ")
+        } else {
+            arrayOutput[key].append(contentsOf: [subArray[1], " "])
+        }
+    }
+        
+    var output = ""
+    for array in arrayOutput {
+        output += array.joined()
+    }
+    print(output)
 }
+
+countSortFull(arr: [["0", "ab"], ["6", "cd"], ["0", "ef"], ["6", "gh"], ["4", "ij"], ["0", "ab"], ["6", "cd"], ["0", "ef"], ["6", "gh"], ["0", "ij"], ["4", "that"], ["3", "be"], ["0", "to"], ["1", "be"], ["5", "question"], ["1", "or"], ["2", "not"], ["4", "is"], ["2", "to"], ["4", "the"]])
+
+countSortFull(arr: [["0", "ab"], ["6", "cd"], ["1", "ef"], ["6", "gh"], ["4", "ij"], ["0", "ab"], ["6", "cd"]])
+
 
 func countingSort2(arr: [Int]) -> [Int] {
     // Write your code here
