@@ -12,6 +12,39 @@ extension Array {
     }
 }
 
+func findMedian(arr: [Int]) -> Int {
+    // Write your code here
+    let sortedArr = arr.sorted()
+    let middle = sortedArr[sortedArr.count / 2]
+    return middle
+}
+
+findMedian(arr: [0, 1, 2, 4, 6, 5, 3])
+
+func closestNumbers(arr: [Int]) -> [Int] {
+    // Write your code here
+    let arrSorted = arr.sorted()
+    var outputArray = [Int]()
+    var minDiff = Int.max
+    
+    for i in 0..<arrSorted.count - 1 {
+        let diff = abs(arrSorted[i] - arrSorted[i+1])
+        minDiff = min(minDiff, diff)
+    }
+    
+    for i in 0..<arrSorted.count - 1 {
+        let diff = abs(arrSorted[i] - arrSorted[i+1])
+        if diff == minDiff {
+            outputArray.append(contentsOf: [arrSorted[i], arrSorted[i+1]])
+        }
+    }
+    
+    return outputArray
+}
+
+closestNumbers(arr: [5, 4, 3, 2])
+closestNumbers(arr: [-20, -3916237, -357920, -3620601, 7374819, -7330761, 30, 6246457, -6461594, 266854])
+
 func countSortFull(arr: [[String]]) -> Void {
     // Write your code here
     let half = arr.count / 2
