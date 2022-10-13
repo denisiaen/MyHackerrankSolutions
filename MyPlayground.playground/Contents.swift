@@ -2,6 +2,35 @@ import UIKit
 
 var greeting = "Hello! Here are my solutions for Hackerank problems."
 
+
+func balancedIndex(numbers: [Int]) -> Int {
+  // add your logic here
+
+  var leftSum = 0
+  var rightSum = 0
+  for index in 1..<numbers.count - 1 {
+    leftSum += numbers[index]
+    for i in (index+1)..<numbers.count - 1 {
+     rightSum += numbers[i]
+    
+    if leftSum == rightSum {
+      return index
+    }
+
+  }
+  }
+
+  return -1;
+}
+
+let numbers1 = [15, 3, 2, 5, 1, 2, 4, 1]
+
+balancedIndex(numbers: numbers1)
+
+let numbers2 = [1, 1, 1, 1];
+let numbers3 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let numbers4 = [7, 1, 3, 2, 5, 3, 3];
+
 extension Array {
     func prettyPrint() {
         let arrToPrint = reduce("") { partialResult, item in
@@ -11,6 +40,38 @@ extension Array {
         print(arrToPrint)
     }
 }
+
+func insertionSort(arr: [Int]) -> Int {
+    // Write your code here
+    var count = 0
+    var sortedArray = arr
+    sortedArray.prettyPrint()
+    
+    for i in 1..<sortedArray.count {
+        var j = i - 1
+        let testingValue = sortedArray[i]
+        var latestIndex = -1
+                
+        while j >= 0 {
+            if testingValue < sortedArray[j] {
+                count += 1
+                latestIndex = j
+            }
+        
+            j = j - 1
+            
+            if j < 0 && latestIndex != -1 {
+                sortedArray.remove(at: i)
+                sortedArray.insert(testingValue, at: latestIndex)
+                sortedArray.prettyPrint()
+            }
+        }
+    }
+
+    return count
+}
+
+insertionSort(arr: [2, 1, 3, 1, 2])
 
 func findMedian(arr: [Int]) -> Int {
     // Write your code here
